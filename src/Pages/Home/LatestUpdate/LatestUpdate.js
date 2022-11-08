@@ -18,7 +18,7 @@ const LatestUpdate = () => {
                 <div className="w-96 bg-base-100">
                     <figure><img src={image2} alt="" className='w-11/12 ml-5' /></figure>
                     <div className="mt-4 ml-5">
-                        <h2 className="text-2xl font-semibold">Makgadikgadi Pans region</h2>
+                        <h2 className="text-2xl font-semibold">Makgadikgadi Pans Region</h2>
                         <p className='mt-4'>These wild meerkats have been habituated to humans so it possible to get close to them. Sometimes they will use people as convenient lookout-posts!</p>
                     </div>
                 </div>
