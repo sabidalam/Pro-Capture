@@ -19,9 +19,9 @@ const Footer = () => {
                 <div className='mt-6'>
                     <span className="footer-title text-dark">Explore</span>
                     <a className="link link-hover">Home</a>
-                    <a className="link link-hover">About</a>
                     <a className="link link-hover">Service</a>
                     <a className="link link-hover">Blog</a>
+                    <a className="link link-hover">About</a>
                 </div>
                 <div className='mt-6'>
                     <span className="footer-title">Legal</span>
