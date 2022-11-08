@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { Form, Link, useNavigate } from 'react-router-dom';
 import image from '../../assets/images/login/login.jpg';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
 
 const SignUp = () => {
     const { createUser, googleSignIn } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
 
     const handleSignUp = event => {
@@ -25,7 +27,13 @@ const SignUp = () => {
     };
 
     const handleGoogleSignIn = () => {
-
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(err => console.error(err))
     }
     return (
         <div>
@@ -54,12 +62,9 @@ const SignUp = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <Link to='' className="label-text-alt link link-hover">Forgot password?</Link>
-                                </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Sign-Up</button>
+                                <button className="btn btn-error">Sign-Up</button>
                             </div>
                             <div>
                                 <p className='text-center font-bold text-gray-600'>Or SignIn With</p>

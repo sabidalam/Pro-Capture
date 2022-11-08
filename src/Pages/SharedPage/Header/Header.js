@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleSingOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+
+    }
     const navItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to=''>About</Link></li>
         <li className='font-semibold'><Link to=''>Services</Link></li>
         <li className='font-semibold'><Link to=''>Blog</Link></li>
+        {
+            user?.uid &&
+            <>
+                <li className='font-semibold'><Link to=''>My-Reviews</Link></li>
+                <li className='font-semibold'><Link to=''>Add Service</Link></li>
+            </>
+        }
     </>
     return (
         <div>
@@ -29,10 +45,30 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <>
-                        <Link className='font-semibold mr-3' to='/signUp'>SignUp</Link>
-                        <Link className='font-semibold mr-3' to='/login'>Login</Link>
-                    </>
+                    {
+                        user?.uid ?
+                            <>
+                                <Link to=''>
+                                    {
+                                        user?.photoURL ?
+                                            <img
+                                                className='mr-3 rounded-full'
+                                                src={user?.photoURL}
+                                                style={{ height: '30px' }}
+                                                alt=''>
+                                            </img>
+                                            :
+                                            <FaUser className='mr-3'></FaUser>
+                                    }
+                                </Link>
+                                <button onClick={handleSingOut} className="btn btn-sm btn-outline btn-error"><Link to='/login'>Logout</Link></button>
+                            </>
+                            :
+                            <>
+                                <Link className='font-semibold mr-3' to='/signUp'>SignUp</Link>
+                                <Link className='font-semibold mr-3' to='/login'>Login</Link>
+                            </>
+                    }
 
                 </div>
             </div>
