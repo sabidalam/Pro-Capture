@@ -1,7 +1,7 @@
 import React from 'react';
-import image1 from '../../../assets/images/zambia.jpg';
-import image2 from '../../../assets/images/meerkats.jpg';
-import image3 from '../../../assets/images/Africa.jpg';
+import image1 from '../../../assets/images/updates/zambia.jpg';
+import image2 from '../../../assets/images/updates/meerkats.jpg';
+import image3 from '../../../assets/images/updates/Africa.jpg';
 
 const LatestUpdate = () => {
     return (

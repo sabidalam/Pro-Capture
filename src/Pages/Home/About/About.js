@@ -1,8 +1,8 @@
 import React from 'react';
-import image1 from '../../../assets/images/about.jpg';
-import image2 from '../../../assets/images/about2.jpg';
-import image3 from '../../../assets/images/about3.jpg';
-import image4 from '../../../assets/images/about4.jpg';
+import image1 from '../../../assets/images/about/about.jpg';
+import image2 from '../../../assets/images/about/about2.jpg';
+import image3 from '../../../assets/images/about/about3.jpg';
+import image4 from '../../../assets/images/about/about4.jpg';
 
 
 const About = () => {
