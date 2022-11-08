@@ -1,29 +1,32 @@
 import React, { useContext } from 'react';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import image from '../../assets/images/login/login.jpg';
-import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
 
-const Login = () => {
-    const { signIn, googleSignIn } = useContext(AuthContext);
-    const handleLogin = event => {
+const SignUp = () => {
+    const { createUser, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleSignUp = event => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        signIn(email, password)
+        createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                form.reset();
+                navigate('/');
             })
-            .catch(err => console.error(err));
-
+            .catch(err => console.error(err))
     };
 
     const handleGoogleSignIn = () => {
 
-    };
-
+    }
     return (
         <div>
             <div className="hero my-8 max-w-5xl mx-auto">
@@ -32,8 +35,14 @@ const Login = () => {
                         <img src={image} alt="" />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm border-2 border-gray-400 bg-base-100">
-                        <Form onSubmit={handleLogin} className="card-body">
-                            <h1 className="text-4xl text-center font-bold">Login!</h1>
+                        <Form onSubmit={handleSignUp} className="card-body">
+                            <h1 className="text-4xl text-center font-bold">Sign-Up!</h1>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -50,22 +59,21 @@ const Login = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-primary">Sign-Up</button>
                             </div>
                             <div>
                                 <p className='text-center font-bold text-gray-600'>Or SignIn With</p>
                                 <div className='form-control text-center mt-5'>
                                     <button onClick={handleGoogleSignIn} className="btn btn-outline btn-accent"><FcGoogle className='text-xl mr-2' />Google</button>
                                 </div>
-                                <p className='text-center text-gray-600 mt-5'>New to this website? <Link className='font-semibold text-orange-400' to='/signUp'>Sign Up</Link></p>
+                                <p className='text-center text-gray-600 mt-5'>Already Have an Account? <Link className='font-semibold text-orange-400' to='/login'>Login</Link></p>
                             </div>
                         </Form>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
 
-export default Login;
+export default SignUp;
