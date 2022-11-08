@@ -16,14 +16,14 @@ const LatestUpdate = () => {
                     </div>
                 </div>
                 <div className="w-96 bg-base-100">
-                    <figure><img src={image2} alt="Shoes" className='w-11/12 ml-5' /></figure>
+                    <figure><img src={image2} alt="" className='w-11/12 ml-5' /></figure>
                     <div className="mt-4 ml-5">
                         <h2 className="text-2xl font-semibold">Makgadikgadi Pans region</h2>
                         <p className='mt-4'>These wild meerkats have been habituated to humans so it possible to get close to them. Sometimes they will use people as convenient lookout-posts!</p>
                     </div>
                 </div>
                 <div className="w-96 bg-base-100">
-                    <figure><img src={image3} alt="Shoes" className='w-11/12 ml-5' /></figure>
+                    <figure><img src={image3} alt="" className='w-11/12 ml-5' /></figure>
                     <div className="mt-4 ml-5">
                         <h2 className="text-2xl font-semibold">Visiting African Forest</h2>
                         <p className='mt-4'>Africa's forests are some of the natural wonders of the world. I'm constantly amazed by the unique forest ecosystems on the continent.</p>

@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import ServicesCard from '../../SharedPage/ServicesCard/ServicesCard';
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import ServicesCard from '../SharedPage/ServicesCard/ServicesCard';
 
-const Services = () => {
-    const [services, setServices] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/service')
-            .then(res => res.json())
-            .then(data => setServices(data))
-    }, [])
+const AllServices = () => {
+    const services = useLoaderData();
     return (
         <div className='my-14'>
             <div className='text-center'>
@@ -24,11 +19,8 @@ const Services = () => {
                 }
 
             </div>
-            <div className='text-center'>
-                <Link to='/services'><button className="btn btn-error">View All Services</button></Link>
-            </div>
         </div>
     );
 };
 
-export default Services;
+export default AllServices;

@@ -6,7 +6,7 @@ const ServicesCard = ({ service }) => {
     const { img, title, ratings, price, description } = service;
     return (
         <div className="card w-80 mx-auto bg-base-100 border-2 border-gray-100">
-            <figure className='px-6 pt-6'><img className='rounded-xl' src={img} alt="Shoes" /></figure>
+            <figure className='px-6 pt-6'><img className='rounded-xl' src={img} alt="" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <div className='flex content-between items-center'>
