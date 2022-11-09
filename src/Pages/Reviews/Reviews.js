@@ -1,36 +1,28 @@
-import React, { useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import ReviewsCard from './ReviewsCard';
 
-const Reviews = ({ service }) => {
+const Reviews = () => {
     const { user } = useContext(AuthContext);
-    const { _id, title } = service;
-    const location = useLocation();
-    const navigate = useNavigate();
+    const [reviews, setReviews] = useState([]);
 
-    const from = location.state?.from?.pathname;
-
-    const handleAddReview = () => {
-        if (user?.uid) {
-            navigate(from, { replace: true });
-        } else {
-            return alert('please login')
-        }
-
-    }
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [user?.email])
     return (
         <div>
-            <div className="hero bg-black py-6">
-                <div className="hero-content text-center">
-                    <div className="max-w-md">
-                        <p className='text-orange-600 text-xl font-semibold mb-5'>Reviews</p>
-                        <h1 className="text-3xl text-white font-bold">What Client Say About My {title} Service</h1>
-                        <p className="py-6"></p>
-                        <Link to={`/addReview/${_id}`}><button onClick={handleAddReview} className="btn btn-error">Add Your Review</button>
-                        </Link>
-                    </div>
-                </div>
+            <p className='text-3xl font-semibold text-orange-600 text-center'>My Reviews</p>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto my-10'>
+                {
+                    reviews.map(review => <ReviewsCard
+                        key={review._id}
+                        review={review}>
+                    </ReviewsCard>)
+                }
             </div>
+
         </div>
     );
 };

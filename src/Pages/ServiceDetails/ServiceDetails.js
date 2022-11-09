@@ -1,11 +1,12 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
-import Reviews from '../Reviews/Reviews';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
+    const { user } = useContext(AuthContext);
     const service = useLoaderData();
-    const { img, title, price, ratings, description } = service;
+    const { _id, img, title, price, ratings, description } = service;
     return (
         <div>
             <div className="hero bg-base-200 py-8">
@@ -27,7 +28,25 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
-            <Reviews service={service}></Reviews>
+            <div>
+                <div className="hero bg-black py-6">
+                    <div className="hero-content text-center">
+                        <div className="max-w-md">
+                            <p className='text-orange-600 text-xl font-semibold mb-5'>Reviews</p>
+                            <h1 className="text-3xl text-white font-bold">What Client Say About My {title} Service</h1>
+                            <p className="py-6"></p>
+                            {
+                                user?.uid ?
+                                    <Link to={`/addReview/${_id}`}><button className="btn btn-error">Add Your Review</button></Link>
+                                    :
+                                    <p className='text-center text-gray-400 mt-5'>Please Login to Add a Review <Link className='font-semibold text-xl text-orange-400' to='/login'><Link to={`/addReview/${_id}`}>Login</Link></Link></p>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
 };
