@@ -9,6 +9,8 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRouter from "./PrivateRouter";
 import img from '../assets/images/404error.jpg';
 import Reviews from "../Pages/Reviews/Reviews";
+import UpdateReview from "../component/UpdateReview/UpdateReview";
+import AddService from "../Pages/AddService/AddService";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
+                path: '/addService',
+                element: <AddService></AddService>,
+            },
+            {
                 path: '/addReview/:id',
                 element: <PrivateRouter><AddReview></AddReview></PrivateRouter>,
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
@@ -37,6 +43,11 @@ const router = createBrowserRouter([
             {
                 path: '/reviews',
                 element: <PrivateRouter><Reviews></Reviews></PrivateRouter>
+            },
+            {
+                path: "/updateReview/:id",
+                element: <UpdateReview></UpdateReview>,
+                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
             },
             {
                 path: '/login',

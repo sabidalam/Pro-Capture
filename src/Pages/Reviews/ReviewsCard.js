@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import img from '../../assets/images/avater.jpg';
+import { Link } from 'react-router-dom';
 
 const ReviewsCard = ({ review, handleDelete }) => {
     const { user } = useContext(AuthContext);
@@ -31,7 +32,7 @@ const ReviewsCard = ({ review, handleDelete }) => {
                         <p className='font-bold mb-3 ml-3'>{reviewer}</p>
                     </div>
                     <div className="card-actions justify-end mt-3">
-                        <button className="btn btn-accent btn-sm">Edit Review</button>
+                        <Link to={`/updateReview/${_id}`}><button className="btn btn-accent btn-sm">Edit Review</button></Link>
                         <button onClick={() => handleDelete(_id)} className="btn btn-error btn-sm">Delete Review</button>
                     </div>
                 </div>

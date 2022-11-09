@@ -8,7 +8,7 @@ const AddReview = () => {
     const { _id, title } = serviceData;
 
 
-    const handlePlaceOrder = event => {
+    const handleAddReview = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -45,7 +45,7 @@ const AddReview = () => {
 
     return (
         <div className='my-8'>
-            <form onSubmit={handlePlaceOrder}>
+            <form onSubmit={handleAddReview}>
                 <h3 className='text-3xl text-center text-orange-600'>Add a Review for {title} Service</h3>
                 <div className='grid grid-cols-1 gap-4 max-w-3xl mx-auto my-5 px-8'>
                     <input name='name' type="text" placeholder="Name" className="input input-bordered input-info w-full" required />
