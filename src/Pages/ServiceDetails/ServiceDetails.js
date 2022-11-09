@@ -27,7 +27,7 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
-            <Reviews></Reviews>
+            <Reviews service={service}></Reviews>
         </div>
     );
 };
