@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import useTitle from '../../component/Hooks/useTitle';
 
 const AddService = () => {
@@ -26,7 +28,9 @@ const AddService = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    alert('Your Service Added Successfully');
+                    toast('Your Service Added Successfully', {
+                        position: 'top-center'
+                    });
                     form.reset();
                 }
             })
@@ -44,6 +48,7 @@ const AddService = () => {
                 </div>
                 <div className='text-center'>
                     <button className="btn btn-error px-10">Add</button>
+                    <ToastContainer />
                 </div>
             </form>
         </div>

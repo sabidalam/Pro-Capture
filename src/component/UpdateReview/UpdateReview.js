@@ -1,18 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../Hooks/useTitle';
 
 const UpdateReview = () => {
     const { user } = useContext(AuthContext);
     const storedReview = useLoaderData();
-    const { _id, serviceName, service, reviewer, photoURL, message, email } = storedReview;
+    const { _id, serviceName, service, reviewer, photoURL, message } = storedReview;
     const [reviews, setReviews] = useState(storedReview);
+    useTitle('Update Review')
 
     const handleUpdateReview = (event) => {
         event.preventDefault();
         console.log(reviews);
         fetch(`http://localhost:5000/reviews/${_id}`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
@@ -23,24 +25,20 @@ const UpdateReview = () => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
                     alert('Review Updated Successfully');
-                    // const remaining = reviews.filter(review => review._id !== _id);
-                    // const updated = reviews.find(review => review._id === _id);
-                    // const newReviews = [updated, ...remaining];
-                    // setReviews(newReviews);
+                    const remaining = reviews.filter(review => review._id !== _id);
+                    const updated = reviews.find(review => review._id === _id);
+                    const newReviews = [updated, ...remaining];
+                    setReviews(newReviews);
                 }
             })
             .catch(err => console.error(err));
     }
 
     const handleInputChange = event => {
-        const review = {
-            service: service._id,
-            serviceName: service.title,
-            reviewer,
-            email,
-            photoURL,
-            message
-        }
+        // const review = {
+        //     service: service._id,
+        //     serviceName: service.title,
+        // }
         const field = event.target.name;
         const value = event.target.value;
         const newReview = { ...reviews };

@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import useTitle from '../../component/Hooks/useTitle';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import ReviewsCard from './ReviewsCard';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Reviews = () => {
     const { user } = useContext(AuthContext);
@@ -23,7 +25,9 @@ const Reviews = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        alert('Deleted Successfully');
+                        toast('Deleted Successfully', {
+                            position: 'top-center'
+                        });
                         const remaining = reviews.filter(review => review._id !== id);
                         setReviews(remaining);
                     }

@@ -19,7 +19,7 @@ const AddReview = () => {
         const message = form.message.value;
 
         const review = {
-            service: _id,
+            id: _id,
             serviceName: title,
             reviewer: name,
             email,
