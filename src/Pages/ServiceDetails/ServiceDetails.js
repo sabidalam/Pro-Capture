@@ -3,23 +3,22 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../component/Hooks/useTitle';
-import ReviewsCard from '../Reviews/ReviewsCard';
 import DisplayReviews from './DisplayReviews/DisplayReviews';
+import AddReview from '../AddReview/AddReview';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
     const { _id, img, title, price, ratings, description } = service;
-    useTitle('Service Details')
+    useTitle('Service Details');
 
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
-        console.log(reviews);
 
-    }, [reviews]);
+    }, [reviews, _id]);
     return (
         <div>
             <div className="hero bg-base-200 py-8">
@@ -57,9 +56,10 @@ const ServiceDetails = () => {
                             </div>
                             {
                                 user?.uid ?
-                                    <Link to={`/addReview/${_id}`}><button className="btn btn-error">Add Your Review</button></Link>
+                                    <AddReview></AddReview>
+                                    // <Link to={`/addReview/${_id}`}><button className="btn btn-error">Add Your Review</button></Link>
                                     :
-                                    <p className='text-center text-gray-400 mt-5'>Please Login to Add a Review <Link className='font-semibold text-xl text-orange-400' to='/login'><Link to={`/addReview/${_id}`}>Login</Link></Link></p>
+                                    <p className='text-center text-gray-400 mt-5'>Please Login to Add a Review <Link className='font-semibold text-xl text-orange-400' to='/login'>Login</Link></p>
                             }
 
                         </div>

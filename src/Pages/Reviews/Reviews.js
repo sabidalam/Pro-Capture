@@ -6,20 +6,33 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Reviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
+    useTitle('My Reviews');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('proCapture-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
             .then(data => setReviews(data))
-    }, [user?.email]);
-    useTitle('My Reviews');
+    }, [user?.email, logOut]);
+
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this order?')
         if (proceed) {
             fetch(`http://localhost:5000/reviews/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('proCapture-token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {

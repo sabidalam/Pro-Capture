@@ -6,9 +6,10 @@ import useTitle from '../Hooks/useTitle';
 const UpdateReview = () => {
     const { user } = useContext(AuthContext);
     const storedReview = useLoaderData();
+    console.log(storedReview);
     const { _id, serviceName, service, reviewer, photoURL, message } = storedReview;
     const [reviews, setReviews] = useState(storedReview);
-    useTitle('Update Review')
+    useTitle('Update Review');
 
     const handleUpdateReview = (event) => {
         event.preventDefault();
@@ -35,10 +36,10 @@ const UpdateReview = () => {
     }
 
     const handleInputChange = event => {
-        // const review = {
-        //     service: service._id,
-        //     serviceName: service.title,
-        // }
+        const review = {
+            id: service._id,
+            serviceName: service.title,
+        }
         const field = event.target.name;
         const value = event.target.value;
         const newReview = { ...reviews };
@@ -57,7 +58,7 @@ const UpdateReview = () => {
                     <textarea onChange={handleInputChange} name='message' defaultValue={message} className="textarea textarea-info textarea-bordered h-24 w-full" placeholder="Write your review" required></textarea>
                 </div>
                 <div className='text-center'>
-                    <button className="btn btn-error px-10">Update</button>
+                    <button className="btn btn-error px-10" disabled>Update</button>
                 </div>
             </form>
 

@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        localStorage.removeItem('proCapture-token');
         return signOut(auth);
     }
 

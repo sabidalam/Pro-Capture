@@ -5,7 +5,7 @@ const DisplayReviews = ({ review }) => {
     const { message, photoURL, reviewer } = review;
     return (
         <div>
-            <div className="card w-80 h-52 bg-base-100 border-2 border-gray-400">
+            <div className="card w-80 h-52 mx-auto bg-gray-300 border-2 border-gray-400">
                 <div className="card-body">
                     <p className='text-xl my-3 text-center'>"{message}"</p>
                     <div className='flex content-evenly items-center'>
