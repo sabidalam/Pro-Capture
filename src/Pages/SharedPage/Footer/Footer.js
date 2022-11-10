@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 
 const Footer = () => {
@@ -11,23 +12,23 @@ const Footer = () => {
                 </div>
                 <div className='mt-6'>
                     <span className="footer-title">Services</span>
-                    <a className="link link-hover">Photography</a>
-                    <a className="link link-hover">Shots</a>
-                    <a className="link link-hover">Editing</a>
-                    <a className="link link-hover">Filming</a>
+                    <Link to='' className="link link-hover">Photography</Link>
+                    <Link to='' className="link link-hover">Shots</Link>
+                    <Link to='' className="link link-hover">Editing</Link>
+                    <Link to='' className="link link-hover">Filming</Link>
                 </div>
                 <div className='mt-6'>
                     <span className="footer-title text-dark">Explore</span>
-                    <a className="link link-hover">Home</a>
-                    <a className="link link-hover">Service</a>
-                    <a className="link link-hover">Blog</a>
-                    <a className="link link-hover">About</a>
+                    <Link to='' className="link link-hover">Home</Link>
+                    <Link to='' className="link link-hover">Services</Link>
+                    <Link to='' className="link link-hover">Blog</Link>
+                    <Link to='' className="link link-hover">About</Link>
                 </div>
                 <div className='mt-6'>
                     <span className="footer-title">Legal</span>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <Link to='' className="link link-hover">Terms of use</Link>
+                    <Link to='' className="link link-hover">Privacy policy</Link>
+                    <Link to='' className="link link-hover">Cookie policy</Link>
                 </div>
             </footer>
 

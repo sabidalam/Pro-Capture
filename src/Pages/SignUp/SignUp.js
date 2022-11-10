@@ -10,7 +10,7 @@ const SignUp = () => {
     const { createUser, googleSignIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
-    useTitle('SignUp')
+    useTitle('SignUp');
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -23,7 +23,21 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                navigate('/');
+                const currentUser = { email: user.email }
+                console.log(currentUser);
+                fetch('https://pro-capture-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('proCapture-token', data.token);
+                        navigate('/');
+                    })
             })
             .catch(err => console.error(err))
     };
@@ -33,7 +47,21 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/');
+                const currentUser = { email: user.email }
+                console.log(currentUser);
+                fetch('https://pro-capture-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('proCapture-token', data.token);
+                        navigate('/');
+                    })
             })
             .catch(err => console.error(err))
     }

@@ -11,7 +11,7 @@ const Reviews = () => {
     useTitle('My Reviews');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+        fetch(`https://pro-capture-server.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('proCapture-token')}`
             }
@@ -28,7 +28,7 @@ const Reviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this order?')
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://pro-capture-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('proCapture-token')}`

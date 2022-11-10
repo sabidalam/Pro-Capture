@@ -25,12 +25,12 @@ const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <AllServices></AllServices>,
-                loader: () => fetch('http://localhost:5000/services')
+                loader: () => fetch('https://pro-capture-server.vercel.app/services')
             },
             {
                 path: '/serviceDetails/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://pro-capture-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/addService',
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: '/addReview/:id',
                 element: <PrivateRouter><AddReview></AddReview></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://pro-capture-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/reviews',
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             {
                 path: "/updateReview/:id",
                 element: <UpdateReview></UpdateReview>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://pro-capture-server.vercel.app/reviews/${params.id}`)
             },
             {
                 path: '/login',

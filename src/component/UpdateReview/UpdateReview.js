@@ -14,7 +14,7 @@ const UpdateReview = () => {
     const handleUpdateReview = (event) => {
         event.preventDefault();
         console.log(reviews);
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://pro-capture-server.vercel.app/reviews/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
