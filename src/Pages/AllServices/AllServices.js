@@ -1,9 +1,11 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../component/Hooks/useTitle';
 import ServicesCard from '../SharedPage/ServicesCard/ServicesCard';
 
 const AllServices = () => {
     const services = useLoaderData();
+    useTitle('Services');
     return (
         <div className='my-14'>
             <div className='text-center'>

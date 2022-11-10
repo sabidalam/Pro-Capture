@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../component/Hooks/useTitle';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const AddReview = () => {
     const { user } = useContext(AuthContext);
     const serviceData = useLoaderData();
     const { _id, title } = serviceData;
+    useTitle('Add Review');
 
 
     const handleAddReview = event => {

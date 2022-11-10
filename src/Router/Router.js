@@ -11,6 +11,7 @@ import img from '../assets/images/404error.jpg';
 import Reviews from "../Pages/Reviews/Reviews";
 import UpdateReview from "../component/UpdateReview/UpdateReview";
 import AddService from "../Pages/AddService/AddService";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
                 path: '/signUp',
                 element: <SignUp></SignUp>
             },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            }
         ]
     },
     {

@@ -4,11 +4,13 @@ import image from '../../assets/images/login/login.jpg';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';
+import useTitle from '../../component/Hooks/useTitle';
 
 const SignUp = () => {
     const { createUser, googleSignIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
+    useTitle('SignUp')
 
     const handleSignUp = event => {
         event.preventDefault();

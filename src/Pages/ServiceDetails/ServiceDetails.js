@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../component/Hooks/useTitle';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const service = useLoaderData();
     const { _id, img, title, price, ratings, description } = service;
+    useTitle('Service Details')
     return (
         <div>
             <div className="hero bg-base-200 py-8">

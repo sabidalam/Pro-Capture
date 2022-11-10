@@ -1,7 +1,7 @@
 import React from 'react';
+import useTitle from '../../component/Hooks/useTitle';
 
 const AddService = () => {
-
     const handleAddService = event => {
         event.preventDefault();
         const form = event.target;
@@ -31,8 +31,8 @@ const AddService = () => {
                 }
             })
             .catch(err => console.error(err));
-
     }
+    useTitle('Add Service');
     return (
         <div className='my-8'>
             <h2 className='text-3xl text-center text-orange-600 font-semibold'>Add A Service</h2>

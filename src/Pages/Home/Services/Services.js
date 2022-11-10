@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../component/Hooks/useTitle';
 import ServicesCard from '../../SharedPage/ServicesCard/ServicesCard';
 
 const Services = () => {
@@ -8,7 +9,7 @@ const Services = () => {
         fetch('http://localhost:5000/service')
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [])
+    }, []);
     return (
         <div className='my-14'>
             <div className='text-center'>

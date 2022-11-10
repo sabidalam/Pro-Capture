@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import useTitle from '../../component/Hooks/useTitle';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import ReviewsCard from './ReviewsCard';
 
@@ -11,7 +12,7 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email]);
-
+    useTitle('My Reviews');
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this order?')
         if (proceed) {

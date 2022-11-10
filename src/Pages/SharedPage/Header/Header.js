@@ -15,7 +15,7 @@ const Header = () => {
     const navItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/services'>Services</Link></li>
-        <li className='font-semibold'><Link to=''>Blog</Link></li>
+        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
         {
             user?.uid &&
             <>
@@ -36,7 +36,7 @@ const Header = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link><img src={logo} alt="" style={{ height: '80px' }} /></Link>
+                    <Link to='/'><img src={logo} alt="" style={{ height: '80px' }} /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">

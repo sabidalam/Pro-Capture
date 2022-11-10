@@ -4,12 +4,14 @@ import image from '../../assets/images/login/login.jpg';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../component/Hooks/useTitle';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const location = useLocation();
     const navigate = useNavigate();
+    useTitle('Login');
 
     const from = location.state?.from?.pathname || '/';
 
