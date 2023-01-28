@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Form, Link, useNavigate } from 'react-router-dom';
-import image from '../../assets/images/login/login.jpg';
+import image from '../../assets/images/login/login.png';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FcGoogle } from 'react-icons/fc';

@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             {
                 path: "/updateReview/:id",
                 element: <UpdateReview></UpdateReview>,
-                loader: ({ params }) => fetch(`https://pro-capture-server.vercel.app/reviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://pro-capture-server.vercel.app/review/${params.id}`)
             },
             {
                 path: '/login',
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
             {
-                path: '/blog',
+                path: '/faq',
                 element: <Blog></Blog>
             }
         ]

@@ -5,10 +5,10 @@ import logo from '../../../assets/images/logo.png';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-blue-200">
+            <footer className="footer p-10 border-t-2">
                 <div>
                     <img src={logo} alt="" />
-                    <p className='ml-5'>ProCapture.<br />Wedding Photography and Filming</p>
+                    <p className='ml-5'>Wildlife Photography and Filming <br /> Copyright © 2023 - All right reserved</p>
                 </div>
                 <div className='mt-6'>
                     <span className="footer-title">Services</span>

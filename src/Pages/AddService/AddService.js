@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useTitle from '../../component/Hooks/useTitle';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AddService = () => {
     const handleAddService = event => {
@@ -9,11 +11,13 @@ const AddService = () => {
         const form = event.target;
         const title = form.title.value;
         const img = form.img.value;
+        const price = form.price.value;
         const description = form.description.value;
 
         const service = {
             title,
             img,
+            price,
             description
         }
 
@@ -36,15 +40,22 @@ const AddService = () => {
             })
             .catch(err => console.error(err));
     }
+
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
     useTitle('Add Service');
+
     return (
         <div className='my-8'>
-            <h2 className='text-3xl text-center text-orange-600 font-semibold'>Add A Service</h2>
-            <form onSubmit={handleAddService}>
-                <div className='grid grid-cols-1 gap-4 max-w-3xl mx-auto my-5 px-8'>
-                    <input name='title' type="text" placeholder="Title" className="input input-bordered input-info w-full" required />
-                    <input name='img' type="text" placeholder="ImgURL" className="input input-bordered input-info w-full" />
-                    <textarea name='description' className="textarea textarea-info textarea-bordered h-24 w-full" placeholder="Write your review" required></textarea>
+            <h2 className='text-3xl text-center text-white font-semibold' data-aos='fade-right'>Add A Service For You</h2>
+            <form onSubmit={handleAddService} data-aos='zoom-in'>
+                <div className='grid grid-cols-1 gap-4 max-w-2xl mx-auto my-5 px-8'>
+                    <input name='title' type="text" placeholder="Title" className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none" required />
+                    <input name='img' type="text" placeholder="PhotoURL" className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none" required />
+                    <input name='price' type='number' placeholder="Price" className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none" required />
+                    <textarea name='description' className="textarea textarea-bordered h-24 w-full" placeholder="Write about your service" required></textarea>
                 </div>
                 <div className='text-center'>
                     <button className="btn btn-error px-10">Add</button>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useTitle from '../../../component/Hooks/useTitle';
 import ServicesCard from '../../SharedPage/ServicesCard/ServicesCard';
 
 const Services = () => {
@@ -11,10 +10,10 @@ const Services = () => {
             .then(data => setServices(data))
     }, []);
     return (
-        <div className='my-14'>
+        <div className='py-14'>
             <div className='text-center'>
-                <h1 className='font-bold text-2xl text-orange-600'>Services Area</h1>
-                <p className='w-1/2 mx-auto mt-3'>Simply Clicked and Simply Better I Can Gives You The Visible Difference</p>
+                <h1 className='font-bold text-3xl text-white'>Services Area</h1>
+                <p className='text-lg w-1/2 mx-auto mt-3'>Simply Clicked and Simply Better I Can Gives You The Visible Difference</p>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto my-10'>
                 {

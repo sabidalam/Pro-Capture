@@ -15,7 +15,7 @@ const Header = () => {
     const navItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/services'>Services</Link></li>
-        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
+        <li className='font-semibold'><Link to='/faq'>FAQ</Link></li>
         {
             user?.uid &&
             <>
@@ -25,8 +25,8 @@ const Header = () => {
         }
     </>
     return (
-        <div>
-            <div className="max-w-5xl mx-auto navbar bg-base-100">
+        <div className='border-b-2'>
+            <div className="max-w-5xl mx-auto navbar">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -60,7 +60,7 @@ const Header = () => {
                                             <FaUser className='mr-3'></FaUser>
                                     }
                                 </Link>
-                                <button onClick={handleSingOut} className="btn btn-sm btn-outline btn-error"><Link to='/login'>Logout</Link></button>
+                                <button onClick={handleSingOut} className="btn btn-sm btn-error normal-case"><Link to='/login'>Logout</Link></button>
                             </>
                             :
                             <>

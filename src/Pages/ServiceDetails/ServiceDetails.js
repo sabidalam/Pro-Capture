@@ -5,6 +5,8 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../component/Hooks/useTitle';
 import DisplayReviews from './DisplayReviews/DisplayReviews';
 import AddReview from '../AddReview/AddReview';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
@@ -19,17 +21,22 @@ const ServiceDetails = () => {
             .then(data => setReviews(data))
 
     }, [reviews, _id]);
+
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
     return (
         <div>
-            <div className="hero bg-base-200 py-8">
+            <div className="hero py-8">
                 <div className="hero-content max-w-5xl mx-auto flex-col lg:flex-row">
-                    <div className='lg:w-1/2 lg:mr-16 lg:mb-8'>
+                    <div className='lg:w-1/2 lg:mr-16 lg:mb-8' data-aos='zoom-in-right'>
                         <img src={img} className="rounded-lg shadow-2xl" alt='' />
                     </div>
-                    <div className='lg:w-1/2'>
+                    <div className='lg:w-1/2' data-aos='zoom-in-left'>
                         <h1 className="text-3xl font-bold">{title}</h1>
                         <div className='mt-3'>
-                            <p className='text-xl text-error font-semibold'>Price: ${price}</p>
+                            <p className='text-xl text-white font-semibold'>Price: ${price}</p>
                             <div className='flex items-center mt-3'>
                                 <p className='text-xl font-semibold'>Rating:</p>
                                 <FaStar className='mx-2 text-yellow-400'></FaStar>
@@ -44,8 +51,8 @@ const ServiceDetails = () => {
                 <div className=" bg-black py-6">
                     <div className="text-center">
                         <div className="">
-                            <p className='text-orange-600 text-xl font-semibold mb-5'>Reviews</p>
-                            <h1 className="text-3xl text-white font-bold">What Client Say About<br /> {title} Service</h1>
+                            <p className='text-white text-xl font-semibold mb-5'>Reviews</p>
+                            <h1 className="text-2xl text-orange-600 font-bold">What Client Say About<br /> {title} Service</h1>
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto my-5'>
                                 {
                                     reviews.map(review => <DisplayReviews

@@ -5,7 +5,7 @@ const Blog = () => {
     useTitle('Blog');
     return (
         <div className='container mx-auto px-6 md:px-40'>
-            <h1 className='text-3xl font-bold bg-gray-300 text-orange-600 text-center rounded md:w-1/6 py-3 mx-auto my-8'>Blog</h1>
+            <h1 className='text-3xl font-bold bg-gray-300 text-black text-center rounded md:w-1/6 py-3 mx-auto my-8'>FAQ</h1>
             <div className='bg-gray-300 text-left pl-12 p-12 rounded mb-8'>
                 <h3 className='text-2xl font-bold mb-4'>What is the Difference between SQL and NoSQL?</h3>
                 <p>
